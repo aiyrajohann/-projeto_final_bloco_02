@@ -11,21 +11,25 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
+const categoria_entity_1 = require("./entities/categoria.entity");
+const categoria_module_1 = require("./categoria/categoria.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forRoot({
+        imports: [
+            typeorm_1.TypeOrmModule.forRoot({
                 type: 'mysql',
                 host: 'localhost',
                 port: 3306,
                 username: 'root',
                 password: '180516',
                 database: 'db_sistema_farmacia',
-                entities: [],
+                entities: [categoria_entity_1.Categoria],
                 synchronize: true,
             }),
+            categoria_module_1.CategoriaModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
